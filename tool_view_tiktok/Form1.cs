@@ -111,7 +111,6 @@ namespace tool_view_tiktok
                     }
                     MessageBox.Show("Please try again", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     return null;
-                    
                 }
                 catch (Exception)
                 {
@@ -153,7 +152,6 @@ namespace tool_view_tiktok
                     if (CheckSetting() == true)
                     {
                         ConcurrentQueue<string> queueWordingrofile = new ConcurrentQueue<string>();
-                        Chrome chrome = new Chrome();
                         
                         Column = Helper.getWidthScreen / windowWidth;
                         Row = Helper.getHeightScreen / windowHeight;
@@ -162,39 +160,43 @@ namespace tool_view_tiktok
                         {
                             start = true;
                         }
-
-                        while (start == true)
-                        {
-                            dataGridViewProfie.Rows.Cast<DataGridViewRow>()
-                                .Where(row => (bool?)row.Cells[0].Value == true)
-                                .ToList()
-                                .ForEach(row =>
-                                {
-                                    queueWordingrofile.Enqueue(row.Cells[1].Value.ToString());
-                                });
-
-                            if (queueWordingrofile.Count > 0)
+                        
+                        dataGridViewProfie.Rows.Cast<DataGridViewRow>()
+                            .Where(row => (bool?)row.Cells[0].Value == true)
+                            .ToList()
+                            .ForEach(row =>
                             {
-                                var tasks = new List<Task>();
-                                
-                                for (int j = 0; j <= numberThereas; j++)
-                                {
-                                    Chrome.listPossitionApp.Add(0);
-                                }
+                                queueWordingrofile.Enqueue(row.Cells[1].Value.ToString());
+                            });
 
-                                for (int j = 0; j <= numberThereas; j++)
+                        if (queueWordingrofile.Count > 0)
+                        {
+                            var tasks = new List<Task>();
+                            
+                            for (int j = 0; j <= numberThereas; j++)
+                            {
+                                Chrome.listPossitionApp.Add(0);
+                            }
+
+                            for (int j = 0; j <= numberThereas; j++)
+                            {
+                                var task = Task.Run(() =>
                                 {
-                                    Task task = new Task(() =>
+                                    if (queueWordingrofile.TryDequeue(out string id))
                                     {
-                                        if (queueWordingrofile.TryDequeue(out string id))
+                                        var profile = ApiOmniLogin.ApiOmniLogin.OpenProfileOmniLogin(id).Result;
+                                        if (profile != null && profile.Type != JTokenType.Null)
                                         {
-                                            var profile = ApiOmniLogin.ApiOmniLogin.OpenProfileOmniLogin(id).Result;
-                                        }
-                                        
-                                    });
-                                    tasks.Add(task);
-                                    Thread.Sleep(2000);
-                                }
+                                            ActionViewTiktok(
+                                                profile["drive_location"].ToString(),
+                                                profile["browser_location"].ToString(),
+                                                profile["remote_debug_address"].ToString()
+                                            );
+                                        }   
+                                    }
+                                });
+                                tasks.Add(task);
+                                Thread.Sleep(2000);
                             }
                         }
                     }
@@ -258,12 +260,15 @@ namespace tool_view_tiktok
             {
                 try
                 {
-                    DataGridViewRow row = dataGridViewProfie.Rows[e.RowIndex];
-                    string id = row.Cells[1].Value.ToString();
-                    var profile = ApiOmniLogin.ApiOmniLogin.OpenProfileOmniLogin(id).Result;
-                    if (profile == null && profile.Type == JTokenType.Null)
+                    if (e.ColumnIndex == dataGridViewProfie.Columns["Open"].Index && e.RowIndex >= 0)
                     {
-                        MessageBox.Show("Please try again", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        DataGridViewRow row = dataGridViewProfie.Rows[e.RowIndex];
+                        string id = row.Cells[1].Value.ToString();
+                        var profile = ApiOmniLogin.ApiOmniLogin.OpenProfileOmniLogin(id).Result;
+                        if (profile == null && profile.Type == JTokenType.Null)
+                        {
+                            MessageBox.Show("Please try again", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        }   
                     }
                 }
                 catch (Exception)
