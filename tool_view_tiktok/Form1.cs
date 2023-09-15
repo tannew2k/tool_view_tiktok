@@ -189,11 +189,6 @@ namespace tool_view_tiktok
                                         if (queueWordingrofile.TryDequeue(out string id))
                                         {
                                             var profile = ApiOmniLogin.ApiOmniLogin.OpenProfileOmniLogin(id).Result;
-                                            var webDriver = chrome.CreateChorme(indexPos,
-                                                profileBrowser["drive_location"].ToString(),
-                                                profileBrowser["browser_location"].ToString(),
-                                                profileBrowser["remote_debug_address"].ToString());
-                                            webDriver.Navigate().GoToUrl("https://www.tiktok.com/");
                                         }
                                         
                                     });
