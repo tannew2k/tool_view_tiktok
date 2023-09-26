@@ -98,3 +98,7 @@ D:\tool_view_tiktok\tool_view_tiktok\obj\Debug\tool_view_tiktok.csproj.CoreCompi
 D:\tool_view_tiktok\tool_view_tiktok\obj\Debug\tool_view_tiktok.csproj.CopyComplete
 D:\tool_view_tiktok\tool_view_tiktok\obj\Debug\tool_view_tiktok.exe
 D:\tool_view_tiktok\tool_view_tiktok\obj\Debug\tool_view_tiktok.pdb
+E:\tool_view_tiktok\tool_view_tiktok\bin\Debug\MasterDevs.ChromeDevTools.dll
+E:\tool_view_tiktok\tool_view_tiktok\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+E:\tool_view_tiktok\tool_view_tiktok\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+E:\tool_view_tiktok\tool_view_tiktok\bin\Debug\WebSocket4Net.dll
