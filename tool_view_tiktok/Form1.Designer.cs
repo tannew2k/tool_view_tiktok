@@ -41,8 +41,9 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.View = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Likes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shares = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Follow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shares = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.IblPageNumber = new System.Windows.Forms.Label();
@@ -105,7 +106,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProfie.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProfie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProfie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.SeclectProfile, this.ID, this.NameProfile, this.Proxy, this.Open, this.Status, this.View, this.Likes, this.Shares, this.Comments });
+            this.dataGridViewProfie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.SeclectProfile, this.ID, this.NameProfile, this.Proxy, this.Open, this.Status, this.View, this.Likes, this.Follow, this.Comments, this.Shares });
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,28 +176,38 @@
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            this.Status.Width = 150;
+            this.Status.Width = 80;
             // 
             // View
             // 
             this.View.HeaderText = "View";
             this.View.Name = "View";
             this.View.ReadOnly = true;
+            this.View.Width = 90;
             // 
             // Likes
             // 
             this.Likes.HeaderText = "Likes";
             this.Likes.Name = "Likes";
+            this.Likes.Width = 90;
             // 
-            // Shares
+            // Follow
             // 
-            this.Shares.HeaderText = "Shares";
-            this.Shares.Name = "Shares";
+            this.Follow.HeaderText = "Follow";
+            this.Follow.Name = "Follow";
+            this.Follow.Width = 90;
             // 
             // Comments
             // 
             this.Comments.HeaderText = "Comments";
             this.Comments.Name = "Comments";
+            this.Comments.Width = 110;
+            // 
+            // Shares
+            // 
+            this.Shares.HeaderText = "Shares";
+            this.Shares.Name = "Shares";
+            this.Shares.Width = 90;
             // 
             // buttonPrevious
             // 
@@ -305,7 +316,7 @@
             this.buttonDetele.TabIndex = 29;
             this.buttonDetele.Text = "Delete";
             this.buttonDetele.UseVisualStyleBackColor = true;
-            this.buttonDetele.Click += new System.EventHandler(this.buttonDetele_Click);
+            this.buttonDetele.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonExport
             // 
@@ -524,6 +535,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelayAction)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn Follow;
 
         private System.Windows.Forms.Button buttonDetele;
 

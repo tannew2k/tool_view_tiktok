@@ -19,8 +19,8 @@ namespace tool_view_tiktok.UndetectChrome
             try
             {
                 Point local = Helper.GetPointFromIndexPosition(indexPos);
-                Form1.Column = (int)Math.Round((decimal)(Helper.getWidthScreen / Form1.windowWidth));
-                Form1.Row = (int)Math.Round((decimal)(Helper.getHeightScreen / Form1.windowHeight));
+                Form1.column = (int)Math.Round((decimal)(Helper.getWidthScreen / Form1.windowWidth));
+                Form1.row = (int)Math.Round((decimal)(Helper.getHeightScreen / Form1.windowHeight));
             
                 var chromeOptions = new ChromeOptions();
                 chromeOptions.BinaryLocation = browserExecutablePath;

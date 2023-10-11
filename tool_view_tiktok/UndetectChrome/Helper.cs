@@ -12,10 +12,10 @@ namespace tool_view_tiktok.UndetectChrome
             var widthWindowChrome = Form1.windowWidth;
             var heightWindowChrome = Form1.windowHeight;
 
-            if ((indexPos + 1) > Form1.Column)
+            if ((indexPos + 1) > Form1.column)
             {
-                var row = indexPos / Form1.Column;
-                var column = indexPos % Form1.Column;
+                var row = indexPos / Form1.column;
+                var column = indexPos % Form1.column;
                 location.X = column * widthWindowChrome;
                 location.Y = row * heightWindowChrome;
             }
