@@ -3,4 +3,5 @@
 	
 	<s:String x:Key="/Default/CodeInspection/PencilsConfiguration/ActualSeverity/@EntryValue">ERROR</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=tool_005Fview_005Ftiktok_002FForm1/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=tool_005Fview_005Ftiktok_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>

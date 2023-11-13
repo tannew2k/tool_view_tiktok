@@ -463,7 +463,7 @@
             this.numericUpDownWindowHeight.Name = "numericUpDownWindowHeight";
             this.numericUpDownWindowHeight.Size = new System.Drawing.Size(185, 27);
             this.numericUpDownWindowHeight.TabIndex = 14;
-            this.numericUpDownWindowHeight.Value = new decimal(new int[] { 800, 0, 0, 0 });
+            this.numericUpDownWindowHeight.Value = new decimal(new int[] { 650, 0, 0, 0 });
             // 
             // numericUpDownWindowWidth
             // 
@@ -473,7 +473,7 @@
             this.numericUpDownWindowWidth.Name = "numericUpDownWindowWidth";
             this.numericUpDownWindowWidth.Size = new System.Drawing.Size(185, 27);
             this.numericUpDownWindowWidth.TabIndex = 13;
-            this.numericUpDownWindowWidth.Value = new decimal(new int[] { 620, 0, 0, 0 });
+            this.numericUpDownWindowWidth.Value = new decimal(new int[] { 450, 0, 0, 0 });
             // 
             // labelWindowHeight
             // 
@@ -502,7 +502,7 @@
             this.numericUpDownDelayAction.Name = "numericUpDownDelayAction";
             this.numericUpDownDelayAction.Size = new System.Drawing.Size(180, 27);
             this.numericUpDownDelayAction.TabIndex = 10;
-            this.numericUpDownDelayAction.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            this.numericUpDownDelayAction.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // labelDelayAction
             // 

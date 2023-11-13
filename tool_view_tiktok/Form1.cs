@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MasterDevs.ChromeDevTools;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
@@ -26,7 +27,7 @@ namespace tool_view_tiktok
     {
         private IPagedList<JToken> _listProfile;
         private int _numberThread;
-        private bool isHeaderCheckBoxCliked;
+        private bool _isHeaderCheckBoxClicked;
         private static int _pageNumber = 1;
         private static int _timeStart;
         private static int _timeEnd;
@@ -49,22 +50,22 @@ namespace tool_view_tiktok
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            Screen[] screens = Screen.AllScreens;
-            if (screens.Length == 2)
-            {
-                Screen primaryScreen = screens[0];
-                Screen secondScreen = screens[1];
-                Helper.getWidthScreen = Screen.PrimaryScreen.Bounds.Height;
-                Helper.getWidthScreen = primaryScreen.Bounds.Width + secondScreen.Bounds.Width;   
-            }
-            else
-            {
+            // Screen[] screens = Screen.AllScreens;
+            // if (screens.Length == 2)
+            // {
+            //     Screen primaryScreen = screens[0];
+            //     Screen secondScreen = screens[1];
+            //     Helper.getWidthScreen = Screen.PrimaryScreen.Bounds.Height;
+            //     Helper.getWidthScreen = primaryScreen.Bounds.Width + secondScreen.Bounds.Width;   
+            // }
+            // else
+            // {
                 Helper.getWidthScreen = Screen.PrimaryScreen.Bounds.Height;
                 Helper.getWidthScreen = Screen.PrimaryScreen.Bounds.Width;   
-            }
+            //}
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             AddHeaderCheckBoxAction();
             headerCheckBoxAction.MouseClick += HeaderCheckBoxAction_MouseClick;
@@ -91,11 +92,11 @@ namespace tool_view_tiktok
 
         public void HeaderCheckBoxActionClick(CheckBox checkBox)
         {
-            isHeaderCheckBoxCliked = true;
+            _isHeaderCheckBoxClicked = true;
             foreach (DataGridViewRow row in dataGridViewProfie.Rows)
                 ((DataGridViewCheckBoxCell)row.Cells[0]).Value = checkBox.Checked;
             dataGridViewProfie.RefreshEdit();
-            isHeaderCheckBoxCliked = false;
+            _isHeaderCheckBoxClicked = false;
         }
 
         public bool CheckSetting()
@@ -172,7 +173,7 @@ namespace tool_view_tiktok
             {
                 runTime = randomTime.Next(_timeStart, _timeEnd);
                 IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)webDriver;
-                
+
 
                 dataGridViewProfie.Invoke(new Action(() =>
                 {
@@ -185,9 +186,9 @@ namespace tool_view_tiktok
                 var wait = new WebDriverWait(webDriver, TimeSpan.FromMinutes(delayAction));
 
                 webDriver.Navigate().GoToUrl("https://www.tiktok.com/");
+                chrome.FillIndexPossition(indexPos, ref Chrome.listPossitionApp);
                 webDriver.SwitchTo().Window(webDriver.WindowHandles[0]);
                 webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromMinutes(delayAction);
-                chrome.FillIndexPossition(indexPos, ref Chrome.listPossitionApp);
 
                 var end = DateTime.Now.AddMinutes(runTime);
 
@@ -214,7 +215,7 @@ namespace tool_view_tiktok
                     var countLike = 0;
                     var countComment = 0;
                     var countFollow = 0;
-                    var countShare = 0;
+                    //var countShare = 0;
 
                     while (end.Subtract(DateTime.Now).Seconds > 0)
                     {
@@ -235,19 +236,25 @@ namespace tool_view_tiktok
                                 {
                                     string result = ActionViewVideoLong(webDriver, actions, jsExecutor, wait, countView,
                                         countLike, countComment, countFollow, count, id, chrome, indexPos);
-                                    countView = int.Parse(result.Split('|')[0]);
-                                    countLike = int.Parse(result.Split('|')[1]);
-                                    countComment = int.Parse(result.Split('|')[2]);
-                                    countFollow = int.Parse(result.Split('|')[3]);
+                                    if (result != "")
+                                    {
+                                        countView = int.Parse(result.Split('|')[0]);
+                                        countLike = int.Parse(result.Split('|')[1]);
+                                        countComment = int.Parse(result.Split('|')[2]);
+                                        countFollow = int.Parse(result.Split('|')[3]);
+                                    }
                                 }
                                 else if (randomVideo <= 30)
                                 {
                                     string result = ActionViewVideoShort(webDriver, actions, jsExecutor, wait,
                                         countView, countLike, countComment, countFollow, count, id, chrome, indexPos);
-                                    countView = int.Parse(result.Split('|')[0]);
-                                    countLike = int.Parse(result.Split('|')[1]);
-                                    countComment = int.Parse(result.Split('|')[2]);
-                                    countFollow = int.Parse(result.Split('|')[3]);
+                                    if (result != "")
+                                    {
+                                        countView = int.Parse(result.Split('|')[0]);
+                                        countLike = int.Parse(result.Split('|')[1]);
+                                        countComment = int.Parse(result.Split('|')[2]);
+                                        countFollow = int.Parse(result.Split('|')[3]);
+                                    }
                                 }
                             }
                         }
@@ -264,19 +271,25 @@ namespace tool_view_tiktok
                                 {
                                     string result = ActionViewVideoLong(webDriver, actions, jsExecutor, wait, countView,
                                         countLike, countComment, countFollow, count, id, chrome, indexPos);
-                                    countView = int.Parse(result.Split('|')[0]);
-                                    countLike = int.Parse(result.Split('|')[1]);
-                                    countComment = int.Parse(result.Split('|')[2]);
-                                    countFollow = int.Parse(result.Split('|')[3]);
+                                    if (result != "")
+                                    {
+                                        countView = int.Parse(result.Split('|')[0]);
+                                        countLike = int.Parse(result.Split('|')[1]);
+                                        countComment = int.Parse(result.Split('|')[2]);
+                                        countFollow = int.Parse(result.Split('|')[3]);
+                                    }
                                 }
                                 else if (randomVideo <= 30)
                                 {
                                     string result = ActionViewVideoShort(webDriver, actions, jsExecutor, wait,
                                         countView, countLike, countComment, countFollow, count, id, chrome, indexPos);
-                                    countView = int.Parse(result.Split('|')[0]);
-                                    countLike = int.Parse(result.Split('|')[1]);
-                                    countComment = int.Parse(result.Split('|')[2]);
-                                    countFollow = int.Parse(result.Split('|')[3]);
+                                    if (result != "")
+                                    {
+                                        countView = int.Parse(result.Split('|')[0]);
+                                        countLike = int.Parse(result.Split('|')[1]);
+                                        countComment = int.Parse(result.Split('|')[2]);
+                                        countFollow = int.Parse(result.Split('|')[3]);
+                                    }
                                 }
                             }
                         }
@@ -299,12 +312,16 @@ namespace tool_view_tiktok
                     row.Cells[5].Value = "Done";
                 }));
 
+                webDriver.Manage().Network.ClearRequestHandlers();
+                webDriver.Manage().Network.ClearResponseHandlers();
                 Chrome.listPossitionApp.Remove(indexPos);
                 webDriver.Close();
                 webDriver.Quit();
             }
             catch (Exception exception)
             {
+                webDriver.Manage().Network.ClearRequestHandlers();
+                webDriver.Manage().Network.ClearResponseHandlers();
                 dataGridViewProfie.Invoke(new Action(() =>
                 {
                     var row = dataGridViewProfie.Rows.Cast<DataGridViewRow>()
@@ -313,6 +330,7 @@ namespace tool_view_tiktok
                     row.Cells[5].Value = "Error";
                 }));
                 Console.WriteLine(exception.ToString());
+                Chrome.listPossitionApp.Remove(indexPos);
                 webDriver.Close();
                 webDriver.Quit();
             }
@@ -403,6 +421,7 @@ namespace tool_view_tiktok
                     var commentInput = wait.Until(ExpectedConditions.ElementIsVisible(
                         By.XPath("//div[@data-e2e=\"comment-text\"]"))
                     );
+                    
                     actions.MoveToElement(commentInput)
                         .ClickAndHold()
                         .Pause(TimeSpan.FromMilliseconds(1000))
@@ -446,10 +465,9 @@ namespace tool_view_tiktok
             catch (Exception exception)
             {
                 Console.WriteLine(exception.ToString());
-                throw exception;
             }
 
-            return countView + "|" + countLike + "|" + countComment + "|" + countFollow;
+            return "";
         }
 
         public string ActionViewVideoLong(IWebDriver webDriver, Actions actions, IJavaScriptExecutor jsExecutor,
@@ -470,29 +488,29 @@ namespace tool_view_tiktok
 
                 if (count > 0)
                 {
-                    sliderTimeVideo = wait.Until(ExpectedConditions.ElementExists(
-                        By.XPath(
-                            $"//div[@data-e2e=\"recommend-list-item-container\"][{count}]//div[div[div[@role=\"slider\"]]]"
-                        )
-                    )).Text;
                     mouseSliderTimeVideo = wait.Until(ExpectedConditions.ElementIsVisible(
                         (By.XPath(
                                 $"//div[@data-e2e=\"recommend-list-item-container\"][{count}]//div[div[div[@role=\"slider\"]]]"
                             )
                         )));
+                    sliderTimeVideo = wait.Until(ExpectedConditions.ElementExists(
+                        By.XPath(
+                            $"//div[@data-e2e=\"recommend-list-item-container\"][{count}]//div[div[div[@role=\"slider\"]]]"
+                        )
+                    )).Text;
                 }
                 else
                 {
-                    sliderTimeVideo = wait.Until(ExpectedConditions.ElementExists(
-                        By.XPath(
-                            "//div[@data-e2e=\"recommend-list-item-container\"]//div[div[div[@role=\"slider\"]]]"
-                        )
-                    )).Text;
                     mouseSliderTimeVideo = wait.Until(ExpectedConditions.ElementIsVisible(
                         (By.XPath(
                                 "//div[@data-e2e=\"recommend-list-item-container\"]//div[div[div[@role=\"slider\"]]]"
                             )
                         )));
+                    sliderTimeVideo = wait.Until(ExpectedConditions.ElementExists(
+                        By.XPath(
+                            "//div[@data-e2e=\"recommend-list-item-container\"]//div[div[div[@role=\"slider\"]]]"
+                        )
+                    )).Text;
                 }
 
                 actions.MoveToElement(mouseSliderTimeVideo)
@@ -613,14 +631,15 @@ namespace tool_view_tiktok
                     row.Cells[8].Value = countFollow.ToString();
                     row.Cells[9].Value = countComment.ToString();
                 }));
+                
+                return countView + "|" + countLike + "|" + countComment + "|" + countFollow;
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception.ToString());
-                throw exception;
             }
 
-            return countView + "|" + countLike + "|" + countComment + "|" + countFollow;
+            return "";
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -704,7 +723,6 @@ namespace tool_view_tiktok
                                     tasks.Add(task);
                                     Thread.Sleep(2000);
                                 }
-
                                 Task.WaitAll(tasks.ToArray());
                             }
                             else
@@ -727,7 +745,7 @@ namespace tool_view_tiktok
                 }
                 catch (Exception)
                 {
-                    var processesChrome = Process.GetProcessesByName("chromedriver (32 bit)");
+                    var processesChrome = Process.GetProcessesByName("chromedriver");
                     foreach (var processChrome in processesChrome) processChrome.Kill();
                 }
             });
@@ -858,7 +876,7 @@ namespace tool_view_tiktok
                 {
                     _start = false;
                     buttonStart.Enabled = false;
-                    var processesChrome = Process.GetProcessesByName("Omnilogin (32 bit)");
+                    var processesChrome = Process.GetProcessesByName("chromedriver");
                     foreach (var processChrome in processesChrome) processChrome.Kill();
                     MessageBox.Show("Stop", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     buttonStart.Enabled = true;
@@ -875,7 +893,7 @@ namespace tool_view_tiktok
             });
         }
 
-        private async void buttonResetProfile_Click(object sender, EventArgs e)
+        private void buttonResetProfile_Click(object sender, EventArgs e)
         {
             try
             {

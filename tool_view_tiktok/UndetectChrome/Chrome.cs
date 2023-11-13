@@ -12,7 +12,6 @@ namespace tool_view_tiktok.UndetectChrome
     public class Chrome 
     {
         public static List<int> listPossitionApp = new List<int>();
-
         
         public IWebDriver CreateChrome(int indexPos, string driverExecutablePath, string browserExecutablePath, string debuggerAddress)
         {
@@ -23,17 +22,18 @@ namespace tool_view_tiktok.UndetectChrome
                 Form1.row = (int)Math.Round((decimal)(Helper.getHeightScreen / Form1.windowHeight));
             
                 var chromeOptions = new ChromeOptions();
+               
                 chromeOptions.BinaryLocation = browserExecutablePath;
                 chromeOptions.DebuggerAddress = debuggerAddress;
                 
                 var chromeService = ChromeDriverService.CreateDefaultService(driverExecutablePath);
                 chromeService.HideCommandPromptWindow = true;
             
-                var chrome = new ChromeDriver(chromeService, chromeOptions, TimeSpan.FromMinutes(5));
+                var chrome = new ChromeDriver(chromeService, chromeOptions, TimeSpan.FromMinutes(3));
                 chrome.Manage().Window.Size = new Size(Form1.windowWidth, Form1.windowHeight);
                 chrome.Manage().Window.Position = new Point(local.X, local.Y);
                 chrome.Manage().Timeouts().PageLoad.Add(TimeSpan.FromMinutes(5));
-            
+               
                 return chrome;
             }
             catch (Exception e)
