@@ -106,7 +106,18 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProfie.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProfie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProfie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.SeclectProfile, this.ID, this.NameProfile, this.Proxy, this.Open, this.Status, this.View, this.Likes, this.Follow, this.Comments, this.Shares });
+            this.dataGridViewProfie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SeclectProfile,
+            this.ID,
+            this.NameProfile,
+            this.Proxy,
+            this.Open,
+            this.Status,
+            this.View,
+            this.Likes,
+            this.Follow,
+            this.Comments,
+            this.Shares});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -211,7 +222,7 @@
             // 
             // buttonPrevious
             // 
-            this.buttonPrevious.Location = new System.Drawing.Point(457, 543);
+            this.buttonPrevious.Location = new System.Drawing.Point(411, 545);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(85, 32);
             this.buttonPrevious.TabIndex = 3;
@@ -221,7 +232,7 @@
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(639, 543);
+            this.buttonNext.Location = new System.Drawing.Point(593, 545);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(85, 32);
             this.buttonNext.TabIndex = 4;
@@ -232,7 +243,7 @@
             // IblPageNumber
             // 
             this.IblPageNumber.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IblPageNumber.Location = new System.Drawing.Point(548, 543);
+            this.IblPageNumber.Location = new System.Drawing.Point(502, 545);
             this.IblPageNumber.Name = "IblPageNumber";
             this.IblPageNumber.Size = new System.Drawing.Size(85, 32);
             this.IblPageNumber.TabIndex = 5;
@@ -268,7 +279,11 @@
             this.numericUpDownNumberThersas.Name = "numericUpDownNumberThersas";
             this.numericUpDownNumberThersas.Size = new System.Drawing.Size(180, 27);
             this.numericUpDownNumberThersas.TabIndex = 8;
-            this.numericUpDownNumberThersas.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            this.numericUpDownNumberThersas.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // panelMain
             // 
@@ -405,7 +420,11 @@
             this.numericUpDownEndTime.Name = "numericUpDownEndTime";
             this.numericUpDownEndTime.Size = new System.Drawing.Size(247, 27);
             this.numericUpDownEndTime.TabIndex = 20;
-            this.numericUpDownEndTime.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            this.numericUpDownEndTime.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // numericUpDownStartTime
             // 
@@ -414,7 +433,11 @@
             this.numericUpDownStartTime.Name = "numericUpDownStartTime";
             this.numericUpDownStartTime.Size = new System.Drawing.Size(256, 27);
             this.numericUpDownStartTime.TabIndex = 19;
-            this.numericUpDownStartTime.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            this.numericUpDownStartTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // labelRunTime
             // 
@@ -459,21 +482,37 @@
             // 
             this.numericUpDownWindowHeight.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownWindowHeight.Location = new System.Drawing.Point(993, 41);
-            this.numericUpDownWindowHeight.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.numericUpDownWindowHeight.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownWindowHeight.Name = "numericUpDownWindowHeight";
             this.numericUpDownWindowHeight.Size = new System.Drawing.Size(185, 27);
             this.numericUpDownWindowHeight.TabIndex = 14;
-            this.numericUpDownWindowHeight.Value = new decimal(new int[] { 650, 0, 0, 0 });
+            this.numericUpDownWindowHeight.Value = new decimal(new int[] {
+            650,
+            0,
+            0,
+            0});
             // 
             // numericUpDownWindowWidth
             // 
             this.numericUpDownWindowWidth.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownWindowWidth.Location = new System.Drawing.Point(993, 8);
-            this.numericUpDownWindowWidth.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.numericUpDownWindowWidth.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownWindowWidth.Name = "numericUpDownWindowWidth";
             this.numericUpDownWindowWidth.Size = new System.Drawing.Size(185, 27);
             this.numericUpDownWindowWidth.TabIndex = 13;
-            this.numericUpDownWindowWidth.Value = new decimal(new int[] { 450, 0, 0, 0 });
+            this.numericUpDownWindowWidth.Value = new decimal(new int[] {
+            450,
+            0,
+            0,
+            0});
             // 
             // labelWindowHeight
             // 
@@ -502,7 +541,11 @@
             this.numericUpDownDelayAction.Name = "numericUpDownDelayAction";
             this.numericUpDownDelayAction.Size = new System.Drawing.Size(180, 27);
             this.numericUpDownDelayAction.TabIndex = 10;
-            this.numericUpDownDelayAction.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            this.numericUpDownDelayAction.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // labelDelayAction
             // 
@@ -534,6 +577,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWindowWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDelayAction)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.DataGridViewTextBoxColumn Follow;
